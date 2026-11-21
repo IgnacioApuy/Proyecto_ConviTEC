@@ -1,0 +1,12 @@
+{
+  "codigo": "LIB",
+  "nombre": "Liberia",
+  "puerto": 5001,
+  "carpetaDatos": "data/sedes/liberia",
+  "rabbitMq": {
+    "host": "localhost",
+    "puerto": 5672,
+    "usuario": "guest",
+    "contrasena": "guest"
+  }
+}
