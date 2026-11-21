@@ -24,9 +24,35 @@ Directory.CreateDirectory(carpetaDatos);
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseUrls($"http://localhost:{config.Puerto}");
 builder.Services.AddSingleton(config);
-builder.Services.AddSingleton(new GestorArchivos(carpetaDatos));
+var gestorArchivos = new GestorArchivos(carpetaDatos);
+var persistencia = new ServicioPersistencia(gestorArchivos);
+builder.Services.AddSingleton(gestorArchivos);
+builder.Services.AddSingleton(persistencia);
 
 var app = builder.Build();
+
+// Aquí cada rol registra sus módulos, en orden de dependencia (primero catálogo, luego inventario, etc.):
+// persistencia.Registrar(inventario);
+
+try
+{
+    ResultadoCarga[] resultados = persistencia.CargarTodo();
+    Console.WriteLine($"Persistencia: {resultados.Length} módulo(s) registrado(s).");
+
+    foreach (ResultadoCarga r in resultados)
+    {
+        string detalle = r.Estado == EstadoCarga.Cargado ? "cargado" : "sin archivo (primer arranque)";
+        Console.WriteLine($"  {r.Archivo}: {detalle}");
+    }
+}
+catch (InvalidDataException ex)
+{
+    Console.Error.WriteLine($"Error al recuperar los datos de la sede: {ex.Message}");
+    return 1;
+}
+
+// Red de seguridad: guarda todo al apagar la sede.
+app.Lifetime.ApplicationStopping.Register(() => persistencia.GuardarTodo());
 
 // El frontend (HTML/CSS/JS) vive en la carpeta frontend/ de la raíz del repositorio.
 var archivosFrontend = new PhysicalFileProvider(Path.Combine(raiz, "frontend"));
