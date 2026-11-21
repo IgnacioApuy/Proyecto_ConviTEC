@@ -1,0 +1,12 @@
+{
+  "codigo": "LIM",
+  "nombre": "Limón",
+  "puerto": 5004,
+  "carpetaDatos": "data/sedes/limon",
+  "rabbitMq": {
+    "host": "localhost",
+    "puerto": 5672,
+    "usuario": "guest",
+    "contrasena": "guest"
+  }
+}

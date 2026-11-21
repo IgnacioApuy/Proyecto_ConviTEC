@@ -1,0 +1,12 @@
+{
+  "codigo": "SJO",
+  "nombre": "San José",
+  "puerto": 5003,
+  "carpetaDatos": "data/sedes/sanjose",
+  "rabbitMq": {
+    "host": "localhost",
+    "puerto": 5672,
+    "usuario": "guest",
+    "contrasena": "guest"
+  }
+}

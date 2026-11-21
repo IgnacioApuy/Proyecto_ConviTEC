@@ -1,0 +1,12 @@
+{
+  "codigo": "ALA",
+  "nombre": "Alajuela",
+  "puerto": 5002,
+  "carpetaDatos": "data/sedes/alajuela",
+  "rabbitMq": {
+    "host": "localhost",
+    "puerto": 5672,
+    "usuario": "guest",
+    "contrasena": "guest"
+  }
+}
