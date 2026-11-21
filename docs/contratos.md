@@ -63,3 +63,20 @@ Pedido[] ObtenerHistorial();
 - Campos de `Mensaje` y `ResultadoPedido` (Christian).
 - Formato JSON de cada módulo (cada responsable documenta el suyo).
 - Endpoints REST (Ignacio, cuando existan los módulos).
+
+## Persistencia en cada módulo (acordado)
+
+Cada módulo que deba sobrevivir al reinicio implementa `IPersistible` y se registra en
+`Program.cs` con `persistencia.Registrar(modulo)`.
+
+- **Orden de registro = orden de carga.** Registrar primero los módulos de los que dependen otros
+  (catálogo, luego inventario, luego pedidos y ventas).
+- **Guardar tras cada cambio:** el módulo (o su gestor) recibe el `ServicioPersistencia` y llama
+  `persistencia.Guardar(this)` después de cada operación que modifique sus datos.
+  Un módulo no registrado lanza `InvalidOperationException` al guardar.
+- **`Reconstruir(json)`** valida el contenido de su propio archivo y lanza una excepción con
+  mensaje claro si es inválido. La sede no arranca con un archivo corrupto y nunca lo sobrescribe.
+- **`IValidable` (opcional):** si el módulo necesita revisar referencias a otros módulos
+  (ej. un pedido que apunta a un producto), implementa `Validar()`. Se ejecuta cuando todos
+  los módulos ya fueron cargados.
+- Cada módulo debe tener un `NombreArchivo` distinto (ej. `inventario.json`, `pedidos.json`).
