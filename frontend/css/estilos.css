@@ -1,3 +1,5 @@
+* { box-sizing: border-box; }
+
 body {
   font-family: system-ui, sans-serif;
   margin: 0;
@@ -5,13 +7,137 @@ body {
   background: #f4f6fa;
 }
 
-header {
+.encabezado {
   background: #14305f;
   color: #fff;
   padding: 1rem 2rem;
 }
+.encabezado h1 { margin: 0; }
+.encabezado p { margin: 0.25rem 0 0; opacity: 0.85; }
 
-header h1 { margin: 0; }
-header p { margin: 0.25rem 0 0; opacity: 0.85; }
+.disposicion { display: flex; min-height: calc(100vh - 5rem); }
 
-main { padding: 2rem; }
+/* Menú lateral */
+#menu {
+  width: 15rem;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #d8deea;
+  padding: 1rem 0;
+}
+#menu h3 {
+  margin: 1rem 1.25rem 0.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7a94;
+}
+#menu a {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  color: #1a2a44;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+#menu a:hover { background: #eef2f9; }
+#menu a.activo {
+  background: #e3ebfa;
+  border-left-color: #14305f;
+  font-weight: 600;
+}
+
+#contenido { flex: 1; padding: 1.5rem 2rem; min-width: 0; }
+#contenido h2 { margin-top: 0; }
+
+/* Tablas */
+.tabla-contenedor { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #d8deea;
+}
+th, td { padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+th { background: #eef2f9; font-size: 0.85rem; }
+tr + tr td { border-top: 1px solid #e6eaf2; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td ul { margin: 0; padding-left: 1.1rem; }
+
+/* Estados de pedido */
+.estado {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.estado-pendiente { background: #fff3cd; color: #7a5b00; }
+.estado-confirmado { background: #d6e6ff; color: #0b3d91; }
+.estado-entregado { background: #d4f1dd; color: #17642f; }
+.estado-cancelado { background: #f8d7da; color: #8a1c26; }
+
+/* Avisos */
+.aviso { padding: 0.8rem 1rem; border-radius: 6px; border: 1px solid; margin: 0.5rem 0; }
+.aviso-info { background: #eef2f9; border-color: #c5d0e6; }
+.aviso-ok { background: #d4f1dd; border-color: #9fd7b1; color: #17642f; }
+.aviso-aviso { background: #fff3cd; border-color: #ecd98a; color: #7a5b00; }
+.aviso-error { background: #f8d7da; border-color: #ebaab0; color: #8a1c26; }
+
+/* Tarjetas */
+.tarjeta {
+  background: #fff;
+  border: 1px solid #d8deea;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  max-width: 34rem;
+  margin-top: 1rem;
+}
+.tarjeta h3 { margin-top: 0; }
+.dato-grande { font-size: 2rem; font-weight: 700; margin: 0.25rem 0; }
+.secundario { color: #6b7a94; margin: 0.25rem 0; }
+
+/* Ruta de entrega */
+.ruta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.75rem 0; }
+.parada {
+  background: #e3ebfa;
+  border: 1px solid #b9c9ea;
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+}
+.parada.origen { background: #14305f; color: #fff; border-color: #14305f; }
+.parada.destino { background: #d4f1dd; border-color: #9fd7b1; }
+.flecha { color: #6b7a94; }
+
+/* Formulario */
+form { max-width: 36rem; }
+label { display: block; margin: 1rem 0 0.3rem; font-weight: 600; }
+select, input {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #b9c4d9;
+  border-radius: 6px;
+  background: #fff;
+}
+.fila-producto { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+.fila-producto select { flex: 1; min-width: 0; }
+.fila-producto input { width: 6rem; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #14305f;
+  background: #14305f;
+  color: #fff;
+}
+button:hover { background: #1d447f; }
+button:disabled { opacity: 0.6; cursor: wait; }
+button.secundario-btn { background: #fff; color: #14305f; }
+button.secundario-btn:hover { background: #eef2f9; }
+.acciones { margin-top: 1rem; display: flex; gap: 0.5rem; }
+
+@media (max-width: 700px) {
+  .disposicion { flex-direction: column; }
+  #menu { width: 100%; border-right: none; border-bottom: 1px solid #d8deea; }
+}
