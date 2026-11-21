@@ -1,6 +1,7 @@
 using ConviTEC.Core.Configuracion;
 using ConviTEC.Core.Persistencia;
 using Microsoft.Extensions.FileProviders;
+using ConviTEC.Api.Endpoints;
 
 string raiz;
 ConfigSede config;
@@ -38,6 +39,7 @@ app.MapGet("/api/sede", () => Results.Ok(new
     nombre = config.Nombre,
     puerto = config.Puerto
 }));
+app.MapEndpointsSimulados(config);
 
 Console.WriteLine($"Sede {config.Nombre} ({config.Codigo}) en http://localhost:{config.Puerto}");
 Console.WriteLine($"Datos locales: {carpetaDatos}");
