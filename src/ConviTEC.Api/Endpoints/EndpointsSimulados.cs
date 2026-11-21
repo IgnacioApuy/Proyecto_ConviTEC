@@ -24,6 +24,7 @@ public static class EndpointsSimulados
         app.MapGet("/api/pedidos/pendientes", () => Results.Ok(DatosSimulados.PorEstado("Confirmado")));
         app.MapGet("/api/inventario", () => Results.Ok(ConstruirInventario(sede)));
         app.MapGet("/api/catalogo", () => Results.Ok(ConstruirCatalogo()));
+                app.MapGet("/api/destinos", () => Results.Ok(DatosSimulados.Destinos));
         app.MapGet("/api/estadisticas/producto-estrella", () => ProductoEstrella());
         app.MapGet("/api/estadisticas/peores-pedidos", () => Results.Ok(PeoresPedidos()));
 
