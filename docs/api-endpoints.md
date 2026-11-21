@@ -15,6 +15,7 @@ Todas las respuestas son JSON. Los datos actuales son **simulados**.
 | `GET /api/catalogo` | Catálogo global con la disponibilidad en cada sede |
 | `GET /api/estadisticas/producto-estrella` | Producto con más ingresos (unidades x precio) |
 | `GET /api/estadisticas/peores-pedidos` | Pedidos entregados, de menor a mayor rendimiento (monto / minutos) |
+| `GET /api/destinos` | Lista de ubicaciones disponibles como punto de entrega |
 
 ## Operaciones
 
