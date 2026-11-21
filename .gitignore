@@ -55,3 +55,13 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# ConviTEC: datos locales de cada sede (no se suben, cada sede tiene los suyos)
+data/sedes/*/*.json
+
+# Se mantienen las carpetas vacías en Git
+!data/sedes/*/.gitkeep
+
+# Varios
+.DS_Store
+Thumbs.db
