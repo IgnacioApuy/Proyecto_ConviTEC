@@ -105,3 +105,6 @@ static string ObtenerNombreSede(string[] args)
     throw new ArgumentException(
         "Indique la sede: dotnet run --project src\\ConviTEC.Api -- --sede liberia");
 }
+
+// Permite que las pruebas de integración levanten la API en memoria.
+public partial class Program { }

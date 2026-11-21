@@ -151,7 +151,11 @@ ConviTEC/
         ├── RutasTests.cs
         ├── PersistenciaTests.cs
         ├── ServicioPersistenciaTests.cs
-        └── ConfigSedeTests.cs
+        ├── ConfigSedeTests.cs
+        ├── ApiContratoTests.cs
+        ├── ApiLiberiaTests.cs
+        ├── ApiDatosSimuladosTests.cs    (temporal: se borra al integrar los módulos)
+        └── ApiFactory.cs
 ```
 
 ### Responsables por carpeta
