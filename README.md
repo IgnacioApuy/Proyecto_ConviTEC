@@ -46,7 +46,7 @@ Funcionalidades principales:
 
 ## Tecnologías
 
-- **Lenguaje:** C# (.NET 8)
+- **Lenguaje:** C# (.NET 10)
 - **Backend / API:** ASP.NET Core
 - **Frontend:** HTML, CSS y JavaScript, servidos por la propia API (ASP.NET Core) de cada sede
 - **Mensajería:** RabbitMQ
@@ -120,7 +120,7 @@ ConviTEC/
 
 ### Requisitos
 
-- .NET 8 SDK
+- .NET 10 SDK
 - RabbitMQ
 - Git
 
