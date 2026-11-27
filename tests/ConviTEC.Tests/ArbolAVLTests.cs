@@ -64,10 +64,10 @@ public class ArbolAVLTests
     }
 
     [Theory]
-    [InlineData(new[] { 30, 20, 10 })] // izquierda-izquierda: rotación simple a la derecha
-    [InlineData(new[] { 10, 20, 30 })] // derecha-derecha: rotación simple a la izquierda
-    [InlineData(new[] { 30, 10, 20 })] // izquierda-derecha: rotación doble
-    [InlineData(new[] { 10, 30, 20 })] // derecha-izquierda: rotación doble
+    [InlineData(new[] { 30, 20, 10 })] 
+    [InlineData(new[] { 10, 20, 30 })] 
+    [InlineData(new[] { 30, 10, 20 })] 
+    [InlineData(new[] { 10, 30, 20 })] 
     public void Insertar_TresClaves_CualquierOrdenQuedaConAlturaDos(int[] claves)
     {
         var arbol = new ArbolAVL<int, int>();
@@ -90,8 +90,7 @@ public class ArbolAVLTests
 
         Assert.Equal(1000, arbol.Cantidad);
         Assert.True(arbol.EsValido());
-        // Un AVL con n nodos tiene altura <= 1.44 * log2(n + 2); para 1000 nodos eso es <= 14.
-        // Un árbol sin balancear tendría altura 1000.
+        
         Assert.True(arbol.Altura <= 14);
     }
 
@@ -129,9 +128,9 @@ public class ArbolAVLTests
         foreach (int clave in claves)
             arbol.Insertar(clave, clave);
 
-        Assert.True(arbol.Eliminar(10)); // hoja
-        Assert.True(arbol.Eliminar(20)); // pasa a ser hoja/un hijo según el balanceo
-        Assert.True(arbol.Eliminar(50)); // la raíz, con dos hijos
+        Assert.True(arbol.Eliminar(10)); 
+        Assert.True(arbol.Eliminar(20)); 
+        Assert.True(arbol.Eliminar(50)); 
 
         Assert.True(arbol.EsValido());
         Assert.Equal(5, arbol.Cantidad);
@@ -156,7 +155,7 @@ public class ArbolAVLTests
         for (int i = 1; i <= 200; i++)
             arbol.Insertar(i, i);
 
-        for (int i = 2; i <= 200; i += 2) // elimina los pares
+        for (int i = 2; i <= 200; i += 2) 
         {
             Assert.True(arbol.Eliminar(i));
             Assert.True(arbol.EsValido());
